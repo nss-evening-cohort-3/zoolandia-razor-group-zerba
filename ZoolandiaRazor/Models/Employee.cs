@@ -8,5 +8,21 @@ namespace ZoolandiaRazor.Models
 {
     public class Employee
     {
+        [Key]
+        public int EmployeeId { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        public int Age { get; set; }
+
+        public List<string> AssignedHabitats { get; set; }
+
+
+
     }
 }
