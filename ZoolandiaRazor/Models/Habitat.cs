@@ -17,8 +17,8 @@ namespace ZoolandiaRazor.Models
         [Required]
         public bool CurrentlyOpen { get; set; }
 
-        public List<Animal> AnimalList { get; set; }
+        public virtual List<Animal> AnimalList { get; set; }
 
-        public List<Employee> EmployeeList { get; set; }
+        public virtual List<Employee> EmployeeList { get; set; }
     }
 }
