@@ -9,9 +9,9 @@ namespace ZoolandiaRazor.Models
 {
     public class Animal
     {
-        public int AnimailId { get; set; }
+        public int AnimalId { get; set; }
 
-        public String  Name { get; set; }
+        public String Name { get; set; }
 
         public int Habitat { get; set; }
 
