@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Moq;
 using System.Data.Entity;
+using ZoolandiaRazor.DAL;
 
 namespace ZoolandiaRazor.Tests.DAL
 {
@@ -17,17 +18,16 @@ namespace ZoolandiaRazor.Tests.DAL
         List<Animal> animal_list { get; set; }
 
         Mock<DbSet<Employee>> mock_employee_table { get; set; }
-        List<Animal> employee_list { get; set; }
+        List<Employee> employee_list { get; set; }
 
         Mock<DbSet<Habitat>> mock_habitat_table { get; set; }
-        List<Animal> habitat_list { get; set; }
+        List<Habitat> habitat_list { get; set; }
 
         Mock<DbSet<Species>> mock_species_table { get; set; }
-        List<Animal> species_list { get; set; }
+        List<Species> species_list { get; set; }
 
-        ZooRepositoryTests repo { get; set; }
+        ZooRepository repo { get; set; }
 
-        [TestMethod]
         public void ConnectMocksToDatastore()
         {
             var animal_queryable_list = animal_list.AsQueryable();
@@ -59,9 +59,9 @@ namespace ZoolandiaRazor.Tests.DAL
             mock_species_table.As<IQueryable<Species>>().Setup(m => m.ElementType).Returns(species_queryable_list.ElementType);
             mock_species_table.As<IQueryable<Species>>().Setup(m => m.GetEnumerator()).Returns(() => species_queryable_list.GetEnumerator());
 
-            mock_context.Setup(c => c.Animal).Returns(mock_animal_table.Object);
-            mock_context.Setup(c => c.Employee).Returns(mock_employee_table.Object);
-            mock_context.Setup(c => c.Habitat).Returns(mock_habitat_table.Object);
+            mock_context.Setup(c => c.Animals).Returns(mock_animal_table.Object);
+            mock_context.Setup(c => c.Employees).Returns(mock_employee_table.Object);
+            mock_context.Setup(c => c.Habitats).Returns(mock_habitat_table.Object);
             mock_context.Setup(c => c.Species).Returns(mock_species_table.Object);
 
 
@@ -77,12 +77,29 @@ namespace ZoolandiaRazor.Tests.DAL
         [TestInitialize]
         public void Initialize()
         {
-            mock_context = new Mock<Animal>();
+
+            mock_context = new Mock<ZooContext>();
+            
+            //Animal
             mock_animal_table = new Mock<DbSet<Animal>>();
-            animal_list = new List<Animal>(); // Fake
+            animal_list = new List<Animal>();
+
+            //Employee
+            mock_employee_table = new Mock<DbSet<Employee>>();
+            employee_list = new List<Employee>();
+
+            //Habitat
+            mock_habitat_table = new Mock<DbSet<Habitat>>();
+            habitat_list = new List<Habitat>();
+
+            //Species
+            mock_species_table = new Mock<DbSet<Species>>();
+            species_list = new List<Species>();
+
             repo = new ZooRepository(mock_context.Object);
 
             ConnectMocksToDatastore();
         }
+
     }
 }
