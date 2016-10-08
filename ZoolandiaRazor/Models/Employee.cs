@@ -21,8 +21,5 @@ namespace ZoolandiaRazor.Models
         public int Age { get; set; }
 
         public List<string> AssignedHabitats { get; set; }
-
-
-
     }
 }
