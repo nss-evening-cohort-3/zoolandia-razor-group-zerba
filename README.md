@@ -42,3 +42,5 @@ You'll need to write produce the following HTML responses about Zoolandia.
     1. List the employees currently assigned to maintenance of the habitat
 1. `/Employee/` - List all employees
 1. `/Employee/Details/1` - Show employees name, age, and habitats currently assigned to
+
+## Completed ERD and Table Join ![Screenshot](/ERD ZoolandiaRazorErd.png)
