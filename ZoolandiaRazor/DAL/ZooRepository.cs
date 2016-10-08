@@ -20,6 +20,11 @@ namespace ZoolandiaRazor.DAL
             Context = _context;
         }
 
+        public List<Species> FindSpeciesByName(string name)
+        {
+            Species found_species = Context.Species.FirstOrDefault(a => a.Name.ToLower() == name.ToLower());
+            return found_species;
+        }
         public List<Animal> GetAnimals()
         {
             return Context.Animal.ToList();
