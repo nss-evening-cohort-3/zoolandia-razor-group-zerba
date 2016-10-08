@@ -12,11 +12,11 @@ namespace ZoolandiaRazor.DAL
     public class ZooContext : DbContext
     {
         //property
-        public virtual DbSet<Animal> Animal { get; set; }
+        public virtual DbSet<Animal> Animals { get; set; }
 
-        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
 
-        public virtual DbSet<Habitat> Habitat { get; set; }
+        public virtual DbSet<Habitat> Habitats { get; set; }
 
         public virtual DbSet<Species> Species { get; set; }
     }
