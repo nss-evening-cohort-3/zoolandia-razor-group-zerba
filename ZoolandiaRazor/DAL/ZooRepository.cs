@@ -25,14 +25,32 @@ namespace ZoolandiaRazor.DAL
             return Context.Animal.ToList();
         }
 
+        public Animal FindAnimalByName(string name)
+        {
+            Animal found_animal = Context.Animal.FirstOrDefault(a => a.Name.ToLower() == name.ToLower());
+            return found_animal;
+        }
+
         public List<Habitat> GetHabitats()
         {
             return Context.Habitat.ToList();
         }
 
+        public Habitat FindHabitatByName(string name)
+        {
+            Habitat found_habitat = Context.Habitat.FirstOrDefault(a => a.Name.ToLower() == name.ToLower());
+            return found_habitat;
+        }
+
         public List<Employee> GetEmployees()
         {
             return Context.Employee.ToList();
+        }
+
+        public Employee FindEmployeeByEmployeeId(int id)
+        {
+            Employee found_employee = Context.Employee.FirstOrDefault(a => a.EmployeeId == id);
+            return found_employee;
         }
 
     }
