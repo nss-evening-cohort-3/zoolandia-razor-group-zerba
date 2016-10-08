@@ -19,7 +19,7 @@ This solution contains:
 should only be responsible for receiving user input and printing output.
 
 
-## Speicifications
+## Specifications
 
 You'll need to write produce the following HTML responses about Zoolandia.
 
@@ -43,4 +43,4 @@ You'll need to write produce the following HTML responses about Zoolandia.
 1. `/Employee/` - List all employees
 1. `/Employee/Details/1` - Show employees name, age, and habitats currently assigned to
 
-## Completed ERD and Table Join ![Screenshot](/ERD ZoolandiaRazorErd.png)
+## Completed ERD and Table Join ![Screenshot](/ERD/ZoolandiaRazorErd.png)
