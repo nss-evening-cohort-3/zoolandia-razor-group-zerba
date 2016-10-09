@@ -58,5 +58,36 @@ namespace ZoolandiaRazor.DAL
             return found_employee;
         }
 
+        public void AddAnimal(Animal my_animal)
+        {
+            
+            if (FindAnimalByAnimalEntered(my_animal.Name) == null)
+            {
+                Context.Animals.Add(my_animal);
+                Context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Error! " + my_animal.Name + " is already in the zoo!");
+            }
+        }
+
+        public Animal FindAnimalByAnimalEntered(string animals_entered)
+        {
+            Animal found_animal = Context.Animals.FirstOrDefault(rowInRowAnimalTable => 
+                                                                    rowInRowAnimalTable.Name.ToString() 
+                                                                         == animals_entered.ToString
+            ());
+            return found_animal;
+        }
+
+
+
+
+
+        public object GetAnimal()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

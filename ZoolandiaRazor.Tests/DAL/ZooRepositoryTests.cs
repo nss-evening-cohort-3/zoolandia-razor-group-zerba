@@ -109,20 +109,55 @@ namespace ZoolandiaRazor.Tests.DAL
 
             ZooContext actual_context = repo.Context;
 
-            Assert.IsInstanceOfType(actual_context, typeof(ZooContext));
-
-
+            Assert.IsInstanceOfType(actual_context, typeof(ZooContext));        
         }
 
-
+        
         [TestMethod]
-        public void MyTestMethod()
+
+        public void EnsureCanAddAnimalsToDatabase()
         {
 
+            //this is my first test that will require fakeing the database
+            //Arrange
+           
+            Animal my_animal = new Animal { AnimalId = 1, Name = "Dog", Age = 17, Habitat = 1};
 
+            //Act
+            repo.AddAnimal(my_animal);
+            int actual_animal_count = repo.GetAnimals().Count;
+            int expected_animal_count = 1;
 
+            //Assert
+            Assert.AreEqual(expected_animal_count, actual_animal_count);
+        }
+
+        /*
+        [TestMethod]
+        public void EnsureICanAddSpciesToDatabase()
+        {
+
+            Species my_species = new Species { CommonName = "Spud",
+                                               Name = "Potato",
+                                               ScientificName = "tuber massive starches", 
+                                               SpeciesId = 1
+
+            };
+
+            //Act
+            repo.AddSpecies(my_species);
+            int actual_species_count = repo.GetSpecies().Count;
+            int expected_species_count = 1;
+
+            //Assert
+            Assert.AreEqual(expected_species_count, actual_species_count);
 
         }
+        */
+
+
+
+
 
 
 
