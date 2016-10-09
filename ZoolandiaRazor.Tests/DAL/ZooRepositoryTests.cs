@@ -101,5 +101,30 @@ namespace ZoolandiaRazor.Tests.DAL
             ConnectMocksToDatastore();
         }
 
+
+        [TestMethod]
+        public void RepoInsureRepoHasContext()
+        {
+            ZooRepository repo = new ZooRepository();
+
+            ZooContext actual_context = repo.Context;
+
+            Assert.IsInstanceOfType(actual_context, typeof(ZooContext));
+
+
+        }
+
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
+
+
+
+
+        }
+
+
+
     }
 }
