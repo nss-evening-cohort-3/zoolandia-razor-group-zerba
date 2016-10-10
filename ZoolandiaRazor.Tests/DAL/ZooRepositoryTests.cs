@@ -101,6 +101,11 @@ namespace ZoolandiaRazor.Tests.DAL
             ConnectMocksToDatastore();
         }
 
+        [TestCleanup] //runs after every test
+        public void TearDown()
+        {
+            repo = null;  // 
+        }
 
         [TestMethod]
         public void RepoInsureRepoHasContext()
@@ -132,6 +137,30 @@ namespace ZoolandiaRazor.Tests.DAL
             Assert.AreEqual(expected_animal_count, actual_animal_count);
         }
 
+        [TestMethod]
+        public void EnsureCanRemoveAnimalsFromRepoInstance()
+        {
+            //Arrange
+            animal_list.Add(new Animal { AnimalId = 1, Name = "Dog", Age = 17, Habitat = 1 });
+            animal_list.Add(new Animal { AnimalId = 2, Name = "Zebra", Age = 5, Habitat = 2 });
+            animal_list.Add(new Animal { AnimalId = 3, Name = "Cat", Age = 7, Habitat = 3 });
+
+            //Act
+            string animal_entered = "Zebra";
+            Animal removed_animal = repo.RemoveAnimal(animal_entered);
+            int expected_animal_count = 2;
+            int actual_animal_count = repo.GetAnimals().Count;
+            int expected_animal_id = 2;
+            int actual_animal_id = removed_animal.AnimalId;
+
+            //Assert
+            Assert.AreEqual(expected_animal_count, actual_animal_count);
+            Assert.AreEqual(expected_animal_id, actual_animal_id);
+        }
+
+
+
+
         /*
         [TestMethod]
         public void EnsureICanAddSpciesToDatabase()
@@ -154,12 +183,7 @@ namespace ZoolandiaRazor.Tests.DAL
 
         }
         */
+       
 
-
-
-
-
-
-
-    }
+    }//end of Zoo Repo Tests
 }

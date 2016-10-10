@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
 using ZoolandiaRazor.Models;
 
 namespace ZoolandiaRazor.DAL
@@ -75,19 +76,34 @@ namespace ZoolandiaRazor.DAL
         public Animal FindAnimalByAnimalEntered(string animals_entered)
         {
             Animal found_animal = Context.Animals.FirstOrDefault(rowInRowAnimalTable => 
-                                                                    rowInRowAnimalTable.Name.ToString() 
-                                                                         == animals_entered.ToString
-            ());
+                                                                    rowInRowAnimalTable.Name.ToString().ToLower()
+                                                                         == animals_entered.ToString().ToLower());
             return found_animal;
         }
 
 
-
-
-
-        public object GetAnimal()
+        public Animal RemoveAnimal(string animal_entered)
         {
-            throw new NotImplementedException();
+            
+            Animal found_animal = FindAnimalByAnimalEntered(animal_entered);
+            if (found_animal != null)
+            {
+                Context.Animals.Remove(found_animal);
+                Context.SaveChanges();
+                return found_animal;
+            }
+            else
+            {
+                throw new Exception("Error! animal doesn't exist");
+            }
         }
+
+        
+
+
+
+
+
+
     }
 }
