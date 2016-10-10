@@ -162,21 +162,16 @@ namespace ZoolandiaRazor.Tests.DAL
             Assert.AreEqual(expected_animal_count, actual_animal_count);
             Assert.AreEqual(expected_animal_id, actual_animal_id);
         }
-
-
-
-
-        /*
+        
+        
         [TestMethod]
         public void EnsureICanAddSpciesToDatabase()
         {
-
+            //Arange
             Species my_species = new Species { CommonName = "Spud",
                                                Name = "Potato",
                                                ScientificName = "tuber massive starches", 
-                                               SpeciesId = 1
-
-            };
+                                               SpeciesId = 1 };
 
             //Act
             repo.AddSpecies(my_species);
@@ -187,8 +182,30 @@ namespace ZoolandiaRazor.Tests.DAL
             Assert.AreEqual(expected_species_count, actual_species_count);
 
         }
-        */
-       
+
+
+        [TestMethod]
+        public void EnsureCanRemoveSpeciesFromRepoInstance()
+        {
+            //Arrange
+            species_list.Add(new Species { SpeciesId = 1, Name = "Spud", CommonName = "Potato", ScientificName = "tuber massive starches" });
+            
+
+            //Act
+            string species_entered = "Spud";
+            Species removed_species = repo.RemoveSpecies(species_entered);
+            int expected_species_count = 0;
+            int actual_species_count = repo.GetAnimals().Count;
+            int expected_species_id = 1;
+            int actual_speices_id = removed_species.SpeciesId;
+
+            //Assert
+            Assert.AreEqual(expected_species_count, actual_species_count);
+            Assert.AreEqual(expected_species_id, actual_speices_id);
+        }
+
+
+
 
     }//end of Zoo Repo Tests
 }
