@@ -98,5 +98,42 @@ namespace ZoolandiaRazor.DAL
             }
         }
 
+        
+
+        public List<Species> GetSpecies()
+        {
+            return Context.Species.ToList();
+        }
+
+        public void AddSpecies(Species my_species)
+        {
+            if (FindSpeciesByName(my_species.Name) == null)
+            {
+                Context.Species.Add(my_species);
+                Context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Error! " + my_species.Name + " is already in the database");
+            }  
+        }
+        
+
+        public Species RemoveSpecies(string species_entered)
+        {
+            Species found_species = FindSpeciesByName(species_entered);
+            if (found_species != null)
+            {
+                Context.Species.Remove(found_species);
+                Context.SaveChanges();
+                return found_species;
+
+            }
+            else
+            {
+
+                throw new Exception("Error! species doesn't exist");
+            }
+        }
     }
 }
