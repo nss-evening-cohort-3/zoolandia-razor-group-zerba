@@ -64,12 +64,17 @@ namespace ZoolandiaRazor.Tests.DAL
             mock_context.Setup(c => c.Habitats).Returns(mock_habitat_table.Object);
             mock_context.Setup(c => c.Species).Returns(mock_species_table.Object);
 
-
+            //Add
             mock_animal_table.Setup(t => t.Add(It.IsAny<Animal>())).Callback((Animal a) => animal_list.Add(a));
             mock_employee_table.Setup(t => t.Add(It.IsAny<Employee>())).Callback((Employee a) => employee_list.Add(a));
             mock_habitat_table.Setup(t => t.Add(It.IsAny<Habitat>())).Callback((Habitat a) => habitat_list.Add(a));
             mock_species_table.Setup(t => t.Add(It.IsAny<Species>())).Callback((Species a) => species_list.Add(a));
 
+            //Delete
+            mock_animal_table.Setup(t => t.Remove(It.IsAny<Animal>())).Callback((Animal a) => animal_list.Remove(a));
+            mock_employee_table.Setup(t => t.Remove(It.IsAny<Employee>())).Callback((Employee a) => employee_list.Remove(a));
+            mock_habitat_table.Setup(t => t.Remove(It.IsAny<Habitat>())).Callback((Habitat a) => habitat_list.Remove(a));
+            mock_species_table.Setup(t => t.Remove(It.IsAny<Species>())).Callback((Species a) => species_list.Remove(a));
 
         }
 
@@ -101,5 +106,89 @@ namespace ZoolandiaRazor.Tests.DAL
             ConnectMocksToDatastore();
         }
 
-    }
+        [TestCleanup] //runs after every test
+        public void TearDown()
+        {
+            repo = null;  // 
+        }
+
+        [TestMethod]
+        public void RepoInsureRepoHasContext()
+        {
+            ZooRepository repo = new ZooRepository();
+
+            ZooContext actual_context = repo.Context;
+
+            Assert.IsInstanceOfType(actual_context, typeof(ZooContext));        
+        }
+
+        
+        [TestMethod]
+
+        public void EnsureCanAddAnimalsToDatabase()
+        {
+
+            //this is my first test that will require fakeing the database
+            //Arrange
+           
+            Animal my_animal = new Animal { AnimalId = 1, Name = "Dog", Age = 17, Habitat = 1};
+
+            //Act
+            repo.AddAnimal(my_animal);
+            int actual_animal_count = repo.GetAnimals().Count;
+            int expected_animal_count = 1;
+
+            //Assert
+            Assert.AreEqual(expected_animal_count, actual_animal_count);
+        }
+
+        [TestMethod]
+        public void EnsureCanRemoveAnimalsFromRepoInstance()
+        {
+            //Arrange
+            animal_list.Add(new Animal { AnimalId = 1, Name = "Dog", Age = 17, Habitat = 1 });
+            animal_list.Add(new Animal { AnimalId = 2, Name = "Zebra", Age = 5, Habitat = 2 });
+            animal_list.Add(new Animal { AnimalId = 3, Name = "Cat", Age = 7, Habitat = 3 });
+
+            //Act
+            string animal_entered = "Zebra";
+            Animal removed_animal = repo.RemoveAnimal(animal_entered);
+            int expected_animal_count = 2;
+            int actual_animal_count = repo.GetAnimals().Count;
+            int expected_animal_id = 2;
+            int actual_animal_id = removed_animal.AnimalId;
+
+            //Assert
+            Assert.AreEqual(expected_animal_count, actual_animal_count);
+            Assert.AreEqual(expected_animal_id, actual_animal_id);
+        }
+
+
+
+
+        /*
+        [TestMethod]
+        public void EnsureICanAddSpciesToDatabase()
+        {
+
+            Species my_species = new Species { CommonName = "Spud",
+                                               Name = "Potato",
+                                               ScientificName = "tuber massive starches", 
+                                               SpeciesId = 1
+
+            };
+
+            //Act
+            repo.AddSpecies(my_species);
+            int actual_species_count = repo.GetSpecies().Count;
+            int expected_species_count = 1;
+
+            //Assert
+            Assert.AreEqual(expected_species_count, actual_species_count);
+
+        }
+        */
+       
+
+    }//end of Zoo Repo Tests
 }
