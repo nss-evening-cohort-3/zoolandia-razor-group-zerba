@@ -64,12 +64,17 @@ namespace ZoolandiaRazor.Tests.DAL
             mock_context.Setup(c => c.Habitats).Returns(mock_habitat_table.Object);
             mock_context.Setup(c => c.Species).Returns(mock_species_table.Object);
 
-
+            //Add
             mock_animal_table.Setup(t => t.Add(It.IsAny<Animal>())).Callback((Animal a) => animal_list.Add(a));
             mock_employee_table.Setup(t => t.Add(It.IsAny<Employee>())).Callback((Employee a) => employee_list.Add(a));
             mock_habitat_table.Setup(t => t.Add(It.IsAny<Habitat>())).Callback((Habitat a) => habitat_list.Add(a));
             mock_species_table.Setup(t => t.Add(It.IsAny<Species>())).Callback((Species a) => species_list.Add(a));
 
+            //Delete
+            mock_animal_table.Setup(t => t.Remove(It.IsAny<Animal>())).Callback((Animal a) => animal_list.Remove(a));
+            mock_employee_table.Setup(t => t.Remove(It.IsAny<Employee>())).Callback((Employee a) => employee_list.Remove(a));
+            mock_habitat_table.Setup(t => t.Remove(It.IsAny<Habitat>())).Callback((Habitat a) => habitat_list.Remove(a));
+            mock_species_table.Setup(t => t.Remove(It.IsAny<Species>())).Callback((Species a) => species_list.Remove(a));
 
         }
 
