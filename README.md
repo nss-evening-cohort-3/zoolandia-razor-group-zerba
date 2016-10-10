@@ -15,7 +15,7 @@ This solution contains:
 - Using the ERD you created in [draw.io](https://www.draw.io/),
 - Create a model and matching migration for the `ZoolandiaRazor` project.
 - Implement a fully unit tested Repository.
-- Implement Fully implement the Razor Views for the supplied `Animal`, `Habitat` and `Employee` controllers using the Specifications below.
+- Implement the Razor Views for the supplied `Animal`, `Habitat` and `Employee` controllers using the Specifications below.
 should only be responsible for receiving user input and printing output.
 
 
