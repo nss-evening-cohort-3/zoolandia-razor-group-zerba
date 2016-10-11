@@ -149,6 +149,10 @@
     <Compile Include="Migrations\201610091337494_InitalCreate.Designer.cs">
       <DependentUpon>201610091337494_InitalCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610110212000_TeamEffort.cs" />
+    <Compile Include="Migrations\201610110212000_TeamEffort.Designer.cs">
+      <DependentUpon>201610110212000_TeamEffort.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -191,10 +195,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Animal\Animal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Animal\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Habitat\" />
   </ItemGroup>
@@ -209,6 +214,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610091337494_InitalCreate.resx">
       <DependentUpon>201610091337494_InitalCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110212000_TeamEffort.resx">
+      <DependentUpon>201610110212000_TeamEffort.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

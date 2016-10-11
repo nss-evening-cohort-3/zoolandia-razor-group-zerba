@@ -1,5 +1,16 @@
 # Zoolandia Razor
 
+
+# Team Name: Zerba
+
+## Contributors:
+
+-[Janelle Zorvan](https://github.com/JZorvan)
+-[Zach Parris](https://github.com/ZachParris)
+-[Bradey Guthrie](https://github.com/guthb)
+
+## Assignment
+
 For this exercise you will create a trival web application that will Read entries stored within a database.
 
 The goal of this project is to help students learn how to develop a web application using a tested Repository Pattern while implmenting Views in Razor. Students are tasked with completing a [Zoolandia ERD](./DBS_ZOOLANDIA_ERD.md) as it is to be used for their models.
