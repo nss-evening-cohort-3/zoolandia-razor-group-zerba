@@ -19,8 +19,8 @@ namespace ZoolandiaRazor.Models
         public int Habitat { get; set; }
 
         [Required]
-        //public int Species { get; set; }
-        public virtual List<Species> Species { get; set; }
+        public string Species { get; set; }
+        //public virtual List<Species> Species { get; set; }
 
         [Required]
         public int Age { get; set; }

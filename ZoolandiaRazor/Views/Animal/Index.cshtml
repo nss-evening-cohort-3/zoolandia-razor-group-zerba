@@ -1,0 +1,17 @@
+﻿
+
+@{ 
+    ViewBag.Title = "Animal";
+
+}
+
+
+<ul>
+    @{foreach (var animal in ViewBag.Animals)
+        {
+            <li>@animal</li>
+        }
+    }
+</ul>
+
+<h2>@ViewBag.Animals.Count</h2>
