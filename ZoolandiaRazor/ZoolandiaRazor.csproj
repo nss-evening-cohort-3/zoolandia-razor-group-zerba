@@ -196,7 +196,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
-    <Content Include="Views\Animal\Animal.cshtml" />
+    <Content Include="Views\Animal\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
