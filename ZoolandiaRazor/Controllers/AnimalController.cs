@@ -28,7 +28,7 @@ namespace ZoolandiaRazor.Controllers
         {
             Animal picked_animal = repo.FindAnimalByName(id);
 
-            ViewBag.Animal = picked_animal;
+            ViewBag.Animals = picked_animal;
 
             return View();
         }
