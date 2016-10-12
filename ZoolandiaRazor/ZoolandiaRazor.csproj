@@ -197,11 +197,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Animal\Index.cshtml" />
     <Content Include="Views\Animal\Details.cshtml" />
+    <Content Include="Views\Habitat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Habitat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -233,7 +233,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49287</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
