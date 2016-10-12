@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZoolandiaRazor.DAL;
+using ZoolandiaRazor.Models;
 
 namespace ZoolandiaRazor.Controllers
 {
@@ -23,8 +24,12 @@ namespace ZoolandiaRazor.Controllers
         }
 
         // GET: Animal/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
+            Animal picked_animal = repo.FindAnimalByName(id);
+
+            ViewBag.Animals = picked_animal;
+
             return View();
         }
 

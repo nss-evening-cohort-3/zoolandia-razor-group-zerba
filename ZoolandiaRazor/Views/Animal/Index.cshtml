@@ -2,16 +2,18 @@
 
 @{ 
     ViewBag.Title = "Animal";
-
 }
 
 
 <ul>
-    @{foreach (var animal in ViewBag.Animals)
+
+    @{
+        for (int i = 0; i < ViewBag.Animals.Count; i++)
         {
-            <li>@animal</li>
+            <li><a href="/Animal/Details/@ViewBag.Animals[i].AnimalId">@ViewBag.Animals[i].Name</a></li>
         }
+    
     }
+    
 </ul>
 
-<h2>@ViewBag.Animals.Count</h2>
