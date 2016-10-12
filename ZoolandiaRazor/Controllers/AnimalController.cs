@@ -24,9 +24,9 @@ namespace ZoolandiaRazor.Controllers
         }
 
         // GET: Animal/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            Animal picked_animal = repo.FindAnimalByName(id);
+            Animal picked_animal = repo.FindAnimalByAnimalId(id);
 
             ViewBag.Animals = picked_animal;
 
