@@ -26,6 +26,13 @@ namespace ZoolandiaRazor.DAL
             Species found_species = Context.Species.FirstOrDefault(a => a.Name.ToLower() == name.ToLower());
             return found_species;
         }
+
+        internal Habitat FindHabitatById(int habitatId)
+        {
+            Habitat found_habitat_id = Context.Habitats.FirstOrDefault(a => a.HabitatId == habitatId);
+            return found_habitat_id;
+        }
+
         public List<Animal> GetAnimals()
         {
             return Context.Animals.ToList();
