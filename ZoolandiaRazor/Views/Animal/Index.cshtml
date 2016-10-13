@@ -10,7 +10,8 @@
     @{
         for (int i = 0; i < ViewBag.Animals.Count; i++)
         {
-            <li><a href="/Animal/Details/@ViewBag.Animals[i].AnimalId">@ViewBag.Animals[i].Name</a></li>
+            <li><a href="/Animal/Details/@ViewBag.Animals[i].AnimalId">Name: @ViewBag.Animals[i].Name  Habitat #: @ViewBag.Animals[i].Habitat</a></li>
+
         }
     
     }
